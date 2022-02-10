@@ -37,14 +37,14 @@ async function run(){
             console.log(result)
         }) 
         //Get Single Course            
-            app.get("/singlecourse/:id", async(req, res) =>{
+            app.get("/courses/:id", async(req, res) =>{
             const result = await coursesCollection
             .find({_id: ObjectId(req.params.id)})
             .toArray();
             res.send(result[0])
         } )  
         //Update Course
-        app.put('/singlecourse/:id', async (req, res) => {
+        app.put('/courses/:id', async (req, res) => {
             const filter = { _id: ObjectId(req.params.id) };
             console.log(req.params.id);
             const options = { upsert: true };
@@ -58,7 +58,7 @@ async function run(){
             });
          
         //Delete Course
-        app.delete("/singlecourse/:id", async (req, res)=>{
+        app.delete("/courses/:id", async (req, res)=>{
             const result = await coursesCollection.deleteOne({
                 _id: ObjectId(req.params.id),
             });
