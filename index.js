@@ -106,6 +106,14 @@ async function run(){
                 const result = await ordersCollection.insertOne(req.body);
                 res.send(result)
             })  
+              //GET Order
+            app.get('/confirmOrder', async (req, res) => {
+            const cursor = ordersCollection.find({});
+            const result = await cursor.toArray();
+            res.send(result);            
+        })
+
+
                 // User Order
             app.get("/myorder/:email", async (req, res) =>{
                 const result = await ordersCollection
